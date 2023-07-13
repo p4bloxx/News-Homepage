@@ -1,0 +1,463 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap');
+
+/*COLORS*/
+  $bg: hsla(36, 100%, 99%, 1);
+  $dark-blue: hsla(240, 100%, 5%, 1);
+  $light-txt: hsla(237, 13%, 42%, 1);
+  $accent-red: hsla(5, 85%, 63%, 1);
+  $big-numb-art: hsla(236, 8%, 79%, 1);
+  $accent-aside: hsla(35, 78%, 62%, 1);
+
+  /*TIPOGRAPHY*/
+  $fs-14: 0.875rem;
+  $fs-15: 0.9375rem;
+  $fs-18: 1.125rem;
+  $fs-20: 1.25rem;
+  $fs-32: 2rem;
+  $fs-40: 2.5rem;
+  $fs-56: 3.5rem;
+
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd,
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul,
+ol
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+
+a{
+    text-decoration: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+  font-family: 'Inter', sans-serif;
+  text-align: left;
+  background-color: $bg;
+  font-weight: 400;
+  padding-inline: 1em;
+}
+
+/*ONLY WHEN NAVBAR MOBILE IS OPEN*/
+.no-scroll{
+  overflow-y: hidden;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+   scroll-behavior: auto;
+  }
+  
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/*components and pattern*/
+
+@mixin flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 1.5em;
+}
+
+.headline{
+  color: $dark-blue;
+  font-size: $fs-40;
+  font-weight: 800;
+  line-height: 1;
+
+   @media screen and (min-width:50em) {
+    max-width: 21rem;
+    font-size: $fs-56;
+   }
+}
+
+p{
+  color: $light-txt;
+}
+
+/*NUMB-ARTICLE*/
+.numb-article{
+  color: $big-numb-art;
+  font-size: $fs-32;
+  font-weight: 700;
+  display: block;
+}
+
+/*NEW label in aside part*/
+h2{
+  font-size: $fs-32;
+  color: $accent-aside;
+  font-weight: 700;
+  margin-block-end: 2.1875rem;
+
+    @media screen and (min-width:50em) {
+        font-size: $fs-40;
+    }
+}
+
+/*BUTTON and CTA*/
+button{
+  cursor: pointer;
+  outline: none;
+  border: none;
+  background: none;
+}
+
+.cta{
+  cursor: pointer;
+  outline: none;
+  border: none;
+  color: $bg;
+  font-size: $fs-14;
+  letter-spacing: 4.375px;
+  background-color: $accent-red;
+  padding: 0.8125em 2em 0.6875em 2em;
+  transition: background-color 0.2s linear;
+  margin-block-start: 1.5em;
+
+  @media screen and (min-width: 50em) {
+    margin-block-start: 1.875em;
+   }
+
+   &:hover{
+    background-color: $dark-blue;
+   }
+}
+
+/*IMAGE HERO SECTION*/
+.hero-desk{
+  display: none;
+}
+
+/*BLACK SCREEN WHEN MOBILE NAV IS OPEN*/
+ .black-screen{
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  background-color: $dark-blue;
+  position: absolute;
+  inset: 0;
+  transition: opacity 0.3s linear;
+
+    @media screen and (min-width:50em) {
+        display: none;
+    }
+}
+
+.black-open{
+  opacity: 0.5;
+}
+
+/*HEADER*/
+.header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  padding-block: 1.75em 2em;
+  z-index: 5;
+
+   @media screen and (min-width:50em) {
+    padding-block:  5.625em 3.4375em;
+    padding-inline: 10.3125em;
+  
+   }
+
+   #logo{
+    height: 1.75em;
+    width: 2.8125em;
+
+      @media screen and (min-width:50em) {
+      width: 4rem;
+      height: 2.5rem;
+      }
+   }
+
+   .nav{
+    position: fixed;
+    z-index: 5;
+    background-color: $bg;
+    inset: 0 0 0 7.5em;
+    max-height: 100%;
+    padding-block-start: 9em;
+    padding-inline: 1.5em 1.25em;
+    transition: all 0.5s ease;
+    transform: translateX(100%);
+
+      @media screen and (min-width:50em) {
+        transform: none;
+        position: relative;
+        inset: 0 0 0 0;
+        padding-block-start: 0;
+      }
+     
+      }
+
+      .menu-list{
+        @include flex;
+        align-items: start;
+
+        @media screen and (min-width:50em) {
+          flex-direction: row;
+          align-items: center;
+          padding-inline: 0;
+        }
+          
+        a{
+          color: $dark-blue;
+          transition: all 0.2s linear;
+          cursor: pointer;
+
+           @media screen and (min-width: 50em) {
+            color: $light-txt;
+
+            &:hover{
+              color: $accent-red;
+            }
+           }
+        }
+    }
+
+    .open{
+      transform: translateX(0);
+    }
+   }
+
+   /*TOGGLE MENU (default is false)*/
+  .toggle-menu{
+    display: block;
+    height: 1em;
+    width: 2.5em;
+    aspect-ratio: 1.5;
+    position: relative;
+    z-index: 100;
+    background: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 0;
+    background-image: url(../assets/images/icon-menu.svg);
+
+      @media screen and (min-width:50em) {
+          display: none;
+      }
+
+  }
+
+  .toggle-menu[aria-expanded="true"]{
+    background-image: url(../assets/images/icon-menu-close.svg);
+    height: 1.7em;
+    width: 1.7em;
+  }
+
+   
+
+.hero-section{
+  @include flex;
+  gap: 0;
+
+   @media screen and (min-width:50em) {
+    padding-inline: 10.3125em;
+    display: grid;
+    grid-template-areas: 
+    "img img aside"
+    "hero-txt hero-txt aside";
+    justify-items: start;
+    align-items: stretch;
+    gap: 1.875rem;
+   }
+
+   .hero-mob{
+    margin-block-end: 1.5em;
+   }
+
+   .hero-desk{
+    grid-area: img;
+   }
+
+   .hero-txt{
+    margin-block-end: 4em;
+    grid-area: hero-txt;
+
+     @media screen and (min-width: 50em) {
+      margin-block-end: 0;
+      display: flex;
+      justify-content: start;
+      align-items: center;
+      gap: 2em;
+     }
+
+     .body-cta{
+      margin-block-start: 1em;
+      @media screen and (min-width: 50em) {
+        margin-block-start: 0;
+        max-width: 21rem;
+       }
+
+        .body{
+          font-size: $fs-15;
+        }
+     }
+   }
+}
+
+/*ASIDE*/
+.side-news{
+  @include flex;
+  align-items: start;
+  gap: 0;
+  background-color: $dark-blue;
+  padding: 1.5em 1.25em;
+  margin-block-end: 5.5em;
+  grid-area: aside;
+
+    @media screen and (min-width: 50em) {
+      margin-block-end: 0;
+    }
+
+   .bord-bottom{
+      padding-block-end: 1.875rem;
+      margin-block-end: 1.875em;
+      border-bottom: 1px solid $light-txt;
+   }
+
+   h3{
+    color: $bg;
+    margin-block-end: 0.5em;
+    transition: all 0.2s linear;
+    cursor: pointer;
+
+      @media screen and (min-width:50em) {
+        &:hover{
+          color: $accent-aside;
+        }
+      }
+   }
+
+   p{
+    color: $big-numb-art;
+    font-size: $fs-15;
+   }
+}
+
+/*ARTICLE-SIDE (THREE ARTICLES ON THE BOTTOM)*/
+.article-side{
+  @include flex;
+  gap: 2rem;
+  margin-block-end: 4.6875em;
+
+   @media screen and (min-width: 50em) {
+    flex-direction: row;
+    margin-block-start: 4.5em;
+    margin-block-end: 8.125em;
+    padding-inline: 10.3125em;
+    align-items: end;
+    justify-content: space-between;
+    gap: 1.875em;
+   }
+
+  article{
+    @include flex;
+    flex-direction: row;
+      @media screen and (min-width: 50em) {
+        align-items: end;
+        max-height: 8.0625em;
+      }
+   }
+
+   img{
+    width: 6.25em;
+    height: 8.0625em;
+   }
+
+   h4{
+    margin-block: 0.75rem 0.5625rem;
+    font-weight: 800;
+    font-size: $fs-18;
+    transition: all 0.2s linear;
+
+      @media screen and (min-width: 50em) {
+        white-space: nowrap;
+        cursor: pointer;
+
+         &:hover{
+          color: $accent-red;
+         }
+      }
+   }
+
+   p{
+    font-size: $fs-15;
+   }
+}
+
+@media screen and (min-width: 50em) {
+  /*IMAGE HERO SECTION*/
+.hero-desk{
+  display: block;
+}
+.hero-mob{
+  display: none;
+}
+}
