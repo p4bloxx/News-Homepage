@@ -28,7 +28,7 @@ This is a my solution to the [News homepage challenge on Frontend Mentor](https:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
+- Solution URL: [https://www.frontendmentor.io/solutions/news-homepage-html-css-sass-javascript-4xMtgRq9M0](https://your-solution-url.com)
 - Live Site URL: [https://p4bloxx.github.io/News-Homepage/](https://p4bloxx.github.io/News-Homepage/)
 
 ## My process
